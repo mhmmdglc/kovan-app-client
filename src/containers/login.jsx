@@ -27,7 +27,6 @@ const LoginContainer = () => {
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
-        console.log(values);
     }
     const onSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +36,6 @@ const LoginContainer = () => {
     const [loginUser, { error }] = useMutation(LOGIN_USER, {
         update(proxy, { data: { loginUser: userdata } }) {
             context.login(userdata)
-            console.log(userdata);
             navigate('/')
         },
         onError({ graphQLErrors }) {
@@ -45,7 +43,6 @@ const LoginContainer = () => {
         },
         variables: { loginInput: values }
     })
-    console.log(error);
     return (
         <>
             <Container p={"30px"}>

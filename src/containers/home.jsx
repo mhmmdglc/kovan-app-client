@@ -35,7 +35,6 @@ const HomeContainer = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(data?.itemsForBikes);
     if (data?.itemsForBikes) {
       setBikeList(data?.itemsForBikes?.data?.bikes);
       setCount(data?.itemsForBikes?.ttl || 0);

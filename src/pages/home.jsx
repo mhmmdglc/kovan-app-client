@@ -11,9 +11,7 @@ const HomePage = () => {
   let navigate = useNavigate();
   const { user } = useContext(AuthContext)
 
-  console.log(user)
   if (!user) {
-    console.log("user")
     navigate('/login')
     return <><LoginPage /></>
   } else {
