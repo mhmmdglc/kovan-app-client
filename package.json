@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.6",
+    "@apollo/react-hooks": "^4.0.0",
     "@apollo/space-kit": "^9.3.1",
     "@chakra-ui/icons": "^2.0.2",
     "@chakra-ui/react": "^2.2.1",
@@ -15,6 +16,8 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^6.3.11",
+    "graphql-tag": "^2.12.6",
+    "jwt-decode": "^3.1.2",
     "graphql": "^16.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

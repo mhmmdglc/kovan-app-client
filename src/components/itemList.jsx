@@ -8,7 +8,6 @@ import {
   Button,
   TableContainer,
   Icon,
-  Tfoot,
   Flex
 } from '@chakra-ui/react'
 import ModalDialog from './modalDialog';
@@ -32,8 +31,7 @@ const ItemList = (prop) => {
 
   return (
     <TableContainer w="100%">
-      <Table variant='simple'>
-
+      <Table variant='simple' size='lg'>
         <Thead>
           <Tr>
             <Th>ID</Th>
@@ -42,11 +40,8 @@ const ItemList = (prop) => {
           </Tr>
         </Thead>
         <Tbody >
-
           {products?.map((bike, index) => {
-            console.log(bike);
-            if (!bike?.bike_id) return (<></>)
-
+            if (!bike?.bike_id) return null;
             return (
               <Tr key={index}>
                 <Td>{bike?.bike_id}</Td>
@@ -58,10 +53,6 @@ const ItemList = (prop) => {
             )
           })}
         </Tbody>
-        <Tfoot w="100%">
-
-        </Tfoot>
-
       </Table>
       <Flex pt="15px" alignItems="center" justifyContent={"center"} w={"100%"}>
         <Icon as={ArrowLeftIcon} mr="10px" />

@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Input, Stack, InputGroup, InputLeftElement, Flex, Select } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 
-const Filter = ({ baseList, bikeList, setBikeList }) => {
+const Filter = ({ baseList, setBikeList }) => {
     const [filterInput, setFilterInput] = useState("");
     const [filterSelect, setFilterSelect] = useState("");
-    const filterList = baseList.map(a => a?.vehicle_type).filter((v, i, a) => (a.indexOf(v) === i && v !== null));
+    const filterList = baseList.map(a => a?.vehicle_type).filter((v, i, a) => (a.indexOf(v) === i));
 
-    console.log(filterList);
     useEffect(() => {
         setBikeList(baseList);
         if (filterInput !== "") {
@@ -24,11 +23,8 @@ const Filter = ({ baseList, bikeList, setBikeList }) => {
                 })
             });
         }
-        console.log(filterSelect);
     }, [filterInput, filterSelect])
 
-    console.log(bikeList);
-    console.log(filterInput);
     return (
         <Flex flexDir="row" pb="20px" w="100%">
             <Stack spacing={4} w="40%">
@@ -43,14 +39,13 @@ const Filter = ({ baseList, bikeList, setBikeList }) => {
 
             <Select placeholder='All' pl="10px" w="40%" onChange={(val) => setFilterSelect(val.target.value)}>
                 {filterList.map((item, index) => {
+                    if (!item) return null;
                     return (
                         <option key={index} value={item}>{item}</option>
                     )
                 })}
             </Select>
-            <Flex justifyContent="end">
-                Total Bookings of Listed Bikes:  {bikeList.length}
-            </Flex>
+
         </Flex>
 
     )

@@ -18,7 +18,6 @@ import { ViewIcon } from '@chakra-ui/icons'
 
 const ModalDialog = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  console.log(props.bike);
   return (
     <>
       <Button onClick={onOpen} bg="white">

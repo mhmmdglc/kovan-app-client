@@ -1,38 +1,28 @@
-import React from 'react'
-import { useQuery, gql } from '@apollo/client';
-import Layout from '../components/layout';
-import ItemCard from '../containers/itemCard';
+import React, { useEffect } from 'react'
+import HomeContainer from '../containers/home';
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/authContext'
+import { useContext } from 'react'
 
+import LoginPage from './login'
 
-export const ITEMS = gql`
-query ItemsForBikes {
-  itemsForBikes {
-    ttl
-    total_count
-    nextPage
-    data {
-      bikes {
-        is_reserved
-        vehicle_type
-        total_bookings
-        android
-        bike_id
-        ios
-      }
-    }
+const HomePage = () => {
+
+  let navigate = useNavigate();
+  const { user } = useContext(AuthContext)
+
+  console.log(user)
+  if (!user) {
+    console.log("user")
+    navigate('/login')
+    return <><LoginPage /></>
+  } else {
+    return (
+      <>
+        <HomeContainer />
+      </>
+    )
   }
 }
-`
 
-const Items = () => {
-  const { loading, error, data } = useQuery(ITEMS);
-  console.log(data?.itemsForBikes);
-
-  return (
-    <Layout >
-      {data?.itemsForBikes && <ItemCard item={data?.itemsForBikes} />}
-    </Layout>
-  )
-}
-
-export default Items
+export default HomePage

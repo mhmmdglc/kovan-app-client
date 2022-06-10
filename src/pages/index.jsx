@@ -1,14 +1,18 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Items from './home'
+import { Routes, Route } from "react-router-dom"
+import HomePage from './home'
+import LoginPage from './login'
+import Header from '../components/header'
 
 const Pages = () => {
     return (
-        <BrowserRouter>
+        <>
+            <Header />
             <Routes>
-                <Route path="/" element={<Items />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
             </Routes>
-        </BrowserRouter>
+        </>
     )
 }
 
